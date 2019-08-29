@@ -60,7 +60,7 @@ response body : [
         "capacity": 88
     },
     {
-        "parkingLotID": 1,
+        "parkingLotID": 2,
         "availablePositionCount": 55,
         "capacity": 66
     }
@@ -89,7 +89,7 @@ response code : 201,
 500
 
 Method : GET
-URL : /employees/{employeeID}/parkingLots/{parkingLotID}
+URL : /employees/{employeeID}/parkingLots
 response body : [
     {
         "parkingLotID": 1,
@@ -97,7 +97,7 @@ response body : [
         "capacity": 88
     },
     {
-        "parkingLotID": 1,
+        "parkingLotID": 2,
         "availablePositionCount": 55,
         "capacity": 66
     }
