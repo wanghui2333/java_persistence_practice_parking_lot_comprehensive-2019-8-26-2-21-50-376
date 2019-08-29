@@ -1,0 +1,26 @@
+Story 1:
+
+Method : POST
+URL : /employees
+request body : {
+    "employeeID": 1
+}
+response body : {
+    "message": "success"
+}
+response code : 201,
+400,
+500
+
+Method : GET
+URL : /employees
+response body : [
+    {
+        "employeeID": "1"
+    },
+    {
+        "employeeID": "2"
+    }
+]
+response code : 200,
+500
