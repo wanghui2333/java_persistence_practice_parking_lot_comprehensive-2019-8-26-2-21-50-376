@@ -3,7 +3,10 @@ Story 1:
 Method : POST
 URL : /employees
 request body : {
-    "employeeID": 1
+    "employeeID": 1,
+    "name": "boy1",
+    "age": 18,
+    "parkingLots": null
 }
 response body : {
     "message": "success"
@@ -16,15 +19,20 @@ Method : GET
 URL : /employees
 response body : [
     {
-        "employeeID": "1"
+        "employeeID": 1,
+        "name": "boy1",
+        "age": 18,
+        "parkingLots": null
     },
     {
-        "employeeID": "2"
+        "employeeID": 2,
+        "name": "boy2",
+        "age": 22,
+        "parkingLots": null
     }
 ]
 response code : 200,
 500
-
 
 Story 2:
 
@@ -32,6 +40,7 @@ Method : POST
 URL : /parkingLots
 request body : {
     "parkingLotID": 1,
+    "availablePositionCount": 88,
     "capacity": 88
 }
 response body : {
@@ -44,6 +53,43 @@ response code : 201,
 
 Method : GET
 URL : /parkingLots
+response body : [
+    {
+        "parkingLotID": 1,
+        "availablePositionCount": 66,
+        "capacity": 88
+    },
+    {
+        "parkingLotID": 1,
+        "availablePositionCount": 55,
+        "capacity": 66
+    }
+]
+response code : 200,
+500
+
+Story 3:
+
+Method : PATCH
+URL : /employees/{employeeID}
+request body : {
+    "employeeID": 1,
+    "parkingLots": [
+        {
+            "parkingLotID": 1
+        }
+    ]
+}
+
+response body : {
+    "message": "success"
+}
+response code : 201,
+400,
+500
+
+Method : GET
+URL : /employees/{employeeID}/parkingLots/{parkingLotID}
 response body : [
     {
         "parkingLotID": 1,
