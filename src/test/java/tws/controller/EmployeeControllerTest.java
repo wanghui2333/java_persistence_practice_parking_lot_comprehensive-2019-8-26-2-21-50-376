@@ -30,7 +30,7 @@ public class EmployeeControllerTest {
     private MockMvc mockMvc;
 
     @Autowired
-    private ObjectMapper ObjectMapper;
+    private ObjectMapper objectMapper;
 
     @Autowired
     private EmployeeMapper employeeMapper;
@@ -40,7 +40,7 @@ public class EmployeeControllerTest {
     @Test
     public void should_return_employees() throws Exception {
         List<Employee> employees = employeeMapper.selectAll();
-        String getString = ObjectMapper.writeValueAsString(employees);
+        String getString = objectMapper.writeValueAsString(employees);
         this.mockMvc.perform(get("/employees")).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().json(getString));
     }
@@ -48,13 +48,14 @@ public class EmployeeControllerTest {
 
     @Test
     public void should_return_create_status() throws Exception {
-        Employee employee = new Employee(1,"boy1",18,null);
-        String postString = ObjectMapper.writeValueAsString(employee);
+        Employee employee = new Employee(1, "boy1", 18, null);
+        String postString = objectMapper.writeValueAsString(employee);
         this.mockMvc
                 .perform(MockMvcRequestBuilders.post("/employees")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(postString))
-                .andDo(print()).andExpect(status().isCreated())
+                .andDo(print())
+                .andExpect(status().isCreated())
                 .andExpect(content().json(postString));
     }
 
@@ -62,7 +63,7 @@ public class EmployeeControllerTest {
     public void should_return_employee_parkingLot() throws Exception {
         List<ParkingLot> parkingLots = parkingLotMapper.selectByParkingBoyId(1);
 
-        String getString = ObjectMapper.writeValueAsString(parkingLots);
+        String getString = objectMapper.writeValueAsString(parkingLots);
         this.mockMvc.perform(get("/employees/" + 1 + "/parkinglots"))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(content().json(getString));

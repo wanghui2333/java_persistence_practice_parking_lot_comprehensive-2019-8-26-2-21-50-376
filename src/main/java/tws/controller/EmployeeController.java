@@ -28,6 +28,6 @@ public class EmployeeController {
     @PostMapping("")
     public ResponseEntity<Employee> insert(@RequestBody Employee employee) {
         employeeMapper.insert(employee);
-        return ResponseEntity.created(URI.create("/employees/" + employee.getId())).body(employee);
+        return ResponseEntity.created(URI.create("/employees/" + employee.getEmployeeID())).body(employee);
     }
 }
