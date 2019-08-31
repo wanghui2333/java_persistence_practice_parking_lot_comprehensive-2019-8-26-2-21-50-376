@@ -1,6 +1,7 @@
 package tws.repository;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
@@ -37,10 +38,10 @@ public class EmployeeMapperTest {
     @Test
     public void shouldFetchAllEmployees() {
         // given
-        jdbcTemplate.execute("INSERT INTO EMPLOYEE VALUES(1,'zhangsan', 21);");
+        jdbcTemplate.execute("INSERT INTO EMPLOYEE VALUES(3,'zhangsan', 21);");
         // when
         List<Employee> employeeList = employeeMapper.selectAll();
         // then
-        assertEquals(1, employeeList.size());
+        Assert.assertEquals(3, employeeList.size());
     }
 }

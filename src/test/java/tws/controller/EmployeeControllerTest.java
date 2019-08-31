@@ -48,7 +48,7 @@ public class EmployeeControllerTest {
 
     @Test
     public void should_return_create_status() throws Exception {
-        Employee employee = new Employee(1, "boy1", 18, null);
+        Employee employee = new Employee(3, "boy1", 18, null);
         String postString = objectMapper.writeValueAsString(employee);
         this.mockMvc
                 .perform(MockMvcRequestBuilders.post("/employees")

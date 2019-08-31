@@ -52,4 +52,14 @@ public class Employee implements Serializable {
     public void setParkingLots(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "employeeID=" + employeeID +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", parkingLots=" + parkingLots +
+                '}';
+    }
 }

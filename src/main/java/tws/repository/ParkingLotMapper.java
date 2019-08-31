@@ -1,6 +1,9 @@
 package tws.repository;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Service;
 import tws.entity.ParkingLot;
 
@@ -17,7 +20,13 @@ import java.util.List;
 @Service
 public interface ParkingLotMapper {
 
-    List<ParkingLot> selectByParkingBoyId(int id);
-
+    @Select("select * from parkingLot")
     List<ParkingLot> selectAll();
+
+    @Insert("insert into parkingLot values(#{parkingLot.parkingLotID},#{parkingLot.availablePositionCount}" +
+            ",#{parkingLot.capacity},#{parkingLot.parkingBoyID})")
+    void insert(@Param("parkingLot") ParkingLot parkingLot);
+
+    @Select("select * from parkingLot where parkingBoyID = #{parkingBoyId}")
+    List<ParkingLot> selectByParkingBoyId(@Param("parkingBoyId")int parkingBoyId);
 }
