@@ -4,7 +4,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import tws.entity.ParkingLot;
 
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.List;
  * @Date : 2019-08-29 23:42
  */
 @Mapper
-@Service
+@Component
 public interface ParkingLotMapper {
 
     @Select("select * from parkingLot")

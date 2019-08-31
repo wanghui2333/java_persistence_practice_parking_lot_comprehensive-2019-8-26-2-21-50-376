@@ -3,9 +3,8 @@ package tws.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tws.entity.Employee;
 import tws.entity.ParkingLot;
-import tws.repository.ParkingLotMapper;
+import tws.service.ParkingLotService;
 
 import java.net.URI;
 import java.util.List;
@@ -15,22 +14,22 @@ import java.util.List;
 @RequestMapping("/parkingLots")
 public class ParkingLotController {
     @Autowired
-    private ParkingLotMapper parkingLotMapper;
+    private ParkingLotService parkingLotService;
 
     @GetMapping
     public ResponseEntity<List<ParkingLot>> getAll() {
 
-        return ResponseEntity.ok(parkingLotMapper.selectAll());
+        return ResponseEntity.ok(parkingLotService.selectAll());
     }
 
     @GetMapping("/{parkingBoyId}")
     public ResponseEntity<List<ParkingLot>> getParkingLotByParkingBoyId(@PathVariable int parkingBoyId){
-        return  ResponseEntity.ok(parkingLotMapper.selectByParkingBoyId(parkingBoyId));
+        return  ResponseEntity.ok(parkingLotService.selectByParkingBoyId(parkingBoyId));
     }
 
     @PostMapping
     public ResponseEntity<ParkingLot> insert(@RequestBody ParkingLot parkingLot) {
-        parkingLotMapper.insert(parkingLot);
+        parkingLotService.insert(parkingLot);
         return ResponseEntity.created(URI.create("/parkingLots/" + parkingLot.getParkingLotID())).body(parkingLot);
     }
 
